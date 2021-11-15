@@ -1,2 +1,2 @@
 # stock-api
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thiagofarbo/stock-api/maven)
+![Docker Automated build](https://img.shields.io/docker/automated/thiago1432/stock-api)
