@@ -16,11 +16,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
       with:
-        java-version: '11'
+        java-version: '1.8'
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven
       run: mvn clean install
+    - uses: mr-smithers-excellent/docker-build-push@v5
+        name: Build & push Docker image
+        with:
+          image: thiago1432/stock-api
+          tags: latest
+          registry: registry-url.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
